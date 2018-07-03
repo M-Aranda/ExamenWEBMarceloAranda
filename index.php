@@ -8,18 +8,20 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="js/bootstrap.js">
-
-
-
-    
+    <link rel="stylesheet" href="css/estilos.css">
 
 </head>
+
 <body>
-    
-    <form action="#" method="post">
-    <input type="text" name="algo" id="algo" placeholder="Escriba algo :">
-    <input type="submit" value="Aceptar">
-    </form>
+
+    <div class="topnav">
+    <nav>
+        <a href="#">Inicio</a> 
+        <a href="view/misionYVision.php">Mision y vision</a> 
+        <a href="view/productos.php">Productos</a> 
+        <a href="view/InicioDeSesion.php">Inicio de sesion</a>
+        </nav>
+    </div>
 
 
 </body>
