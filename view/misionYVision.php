@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +21,26 @@
         <a href="../index.php">Inicio</a> 
         <a href="misionYVision.php">Mision y vision</a> 
         <a href="productos.php">Productos</a> 
-        <a href="InicioDeSesion.php">Inicio de sesion</a>
+        <?php
+            if(isset($_SESSION["usuario"])){
+                echo "<a href=../controller/cerrarSesion.php>Cerrar sesion</a>";
+                
+            }else if(!isset($_SESSION["usuario"])){
+                echo "<a href=InicioDeSesion.php>Iniciar sesion</a>";
+            }
+
+    ?>
         </nav>
     </div>
 
     <br>
-    <h1>En construccion</h1>
+    
+    <p>Aviso</p>
+
+<aside>
+  <h4>Ha habido un inconveniente</h4>
+  <p>Lamentamos informarle que esta seccion aun se encuentra en construccion.</p>
+</aside>
+
 </body>
 </html>

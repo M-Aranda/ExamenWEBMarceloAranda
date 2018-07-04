@@ -22,33 +22,26 @@ class Data{
         $this->usarConexion($query);
     }
 
-    public function getUsuarios(){
-        $query="SELECT id, nombre, rut FROM USUARIO";
+
+
+    public function existeRut($rut){
+        $query="SELECT COUNT(*) FROM usuario WHERE rut = '$rut'";
 
         $this->con->conectar();
-        $lista=array();
 
-        $this->con->desconectar();
+        $rs = $this->con->ejecutar($query);
+        $existe = false;
 
-        return $lista;
- }
-
- public function existeRut ($rut){
-        $query="SELECT COUNT(*) FROM usuario WHERE rut ='$rut' ";
-        $this->con->conectar();
-        $rs=$this->con->ejecutar($query);
-
-        $existe=false;
-
-        if($reg->mysql_fetch_array){
-            if($reg[0]=1){
-                $existe=true;
+        if($reg = $rs->fetch_array()){
+            if($reg[0] == 1){
+                $existe = true;
             }
         }
 
         $this->con->desconectar();
+        
         return $existe;
-}
+    }
 
     public function getUsuario($rut, $pass){
         $query = "SELECT id, nombre, rut FROM usuario WHERE rut = '$rut' AND clave = '$pass'";

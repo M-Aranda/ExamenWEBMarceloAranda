@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Error</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/js/bootstrap.js">
+    <link rel="stylesheet" href="../css/estilos.css">
+
 </head>
 <body>
     <h3>Datos invalidos</h3>
-    
+    <a href="inicioDeSesion.php">Volver atras</a>
 </body>
 </html>

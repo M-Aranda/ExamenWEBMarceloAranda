@@ -44,7 +44,4 @@ class Usuario{
         return $this->pass;
     }
 
-
-
-
 }
