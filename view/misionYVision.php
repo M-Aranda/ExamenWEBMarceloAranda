@@ -20,10 +20,12 @@ session_start();
     <nav>
         <a href="../index.php">Inicio</a> 
         <a href="misionYVision.php">Mision y vision</a> 
-        <a href="productos.php">Productos</a> 
+        
         <?php
             if(isset($_SESSION["usuario"])){
+                echo "<a href=productos.php>Productos</a> ";
                 echo "<a href=../controller/cerrarSesion.php>Cerrar sesion</a>";
+                
                 
             }else if(!isset($_SESSION["usuario"])){
                 echo "<a href=InicioDeSesion.php>Iniciar sesion</a>";
@@ -35,11 +37,17 @@ session_start();
 
     <br>
     
-    <p>Aviso</p>
+    <p>Informacion</p>
 
 <aside>
-  <h4>Ha habido un inconveniente</h4>
-  <p>Lamentamos informarle que esta seccion aun se encuentra en construccion.</p>
+  <h4>Nuestra vision</h4>
+  <p>Estamos dedicados a mejorar y crecer junto a nuestros clientes.</p>
+</aside>
+
+
+<aside>
+  <h4>Nuestra mision</h4>
+  <p>Otorgarle los mejores precios y calidad de producto a nuestra clientela.</p>
 </aside>
 
 </body>

@@ -20,11 +20,12 @@ session_start();
     <nav>
         <a href="../index.php">Inicio</a> 
         <a href="misionYVision.php">Mision y vision</a> 
-        <a href="productos.php">Productos</a> 
+        
 
     <?php
             if(isset($_SESSION["usuario"])){
                 echo "<a href=../controller/cerrarSesion.php>Cerrar sesion</a>";
+                echo "<a href=productos.php>Productos</a>"; 
                 
             }else if(!isset($_SESSION["usuario"])){
                 echo "<a href=InicioDeSesion.php>Iniciar sesion</a>";

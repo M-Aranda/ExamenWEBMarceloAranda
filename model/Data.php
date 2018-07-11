@@ -1,6 +1,7 @@
 <?php
 require_once("Conexion.php");
 require_once("Usuario.php");
+require_once("Producto.php");
 
 class Data{
     private $con;
@@ -59,6 +60,88 @@ class Data{
     
         return $usuario;
     }
+
+    public function getDiscosPorNombre($nombreDisco){
+        $query = "SELECT * FROM verProductosConInfo WHERE Disco = '$nombreDisco' ";
+        // deberia usar like... pero tenia unos dramas con el uso de like en php
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $discos = array();
+
+        while($reg = $rs->fetch_array()){
+            
+            $disco = new Producto($reg[0], $reg[1], $reg[2], $reg[3], $reg[4], $reg[5]);
+            $discos[]=$disco;
+        }
+
+        $this->con->desconectar();
+    
+        return $discos;
+    }
+
+
+    public function getDiscosPorBanda($nombreBanda){
+        $query = "SELECT * FROM verProductosConInfo WHERE Banda = '$nombreBanda' ";
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $discos = array();
+
+        while($reg = $rs->fetch_array()){
+            
+            $disco = new Producto($reg[0], $reg[1], $reg[2], $reg[3], $reg[4], $reg[5]);
+            $discos[]=$disco;
+        }
+
+        $this->con->desconectar();
+    
+        return $discos;
+    }
+
+    public function getDiscosPorGenero($nombreGenero){
+        $query = "SELECT * FROM verProductosConInfo WHERE Genero = '$nombreGenero' ";
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $discos = array();
+
+        while($reg = $rs->fetch_array()){
+            
+            $disco = new Producto($reg[0], $reg[1], $reg[2], $reg[3], $reg[4], $reg[5]);
+            $discos[]=$disco;
+        }
+
+        $this->con->desconectar();
+    
+        return $discos;
+    }
+
+
+
+    
+    public function getTodosLosDiscos(){
+        $query = "SELECT * FROM verProductosConInfo ";
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $discos = array();
+
+        while($reg = $rs->fetch_array()){
+            
+            $disco = new Producto($reg[0], $reg[1], $reg[2], $reg[3], $reg[4], $reg[5]);
+            $discos[]=$disco;
+        }
+
+        $this->con->desconectar();
+    
+        return $discos;
+    }
+
+
+
+
+
 }
 
 

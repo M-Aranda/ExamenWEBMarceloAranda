@@ -29,19 +29,19 @@ class Usuario{
     }
 
     public function setId($id){
-        return $this->id;
+        $this->id = $id;
     }
 
     public function setRut($rut){
-        return $this->rut;
+        $this->rut = $rut;
     }
 
     public function setNombre($nombre){
-        return $this->nombre;
+        $this->nombre = $nombre;
     }
 
     public function setPass($pass){
-        return $this->pass;
+        $this->pass = $pass;
     }
 
 }
