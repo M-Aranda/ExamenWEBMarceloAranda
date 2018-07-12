@@ -44,6 +44,15 @@ session_start();
                 echo "<h3>Aqui puede ver los productos que ha adquirido, ".$u->getNombre()."</h3>";            
             }
 
+
+            if(isset($_SESSION["msgValidez"])){
+                $mensaje=$_SESSION["msgValidez"];
+                echo "<br>";
+                echo "<h4>".$mensaje."</h4>";
+                echo "<br>";
+                unset($_SESSION["msgValidez"]);
+            }
+
             ?>
 
 

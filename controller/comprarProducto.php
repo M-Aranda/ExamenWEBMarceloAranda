@@ -13,6 +13,21 @@ $idUsuario=$u->getId();
 
 $d->comprarProducto($idUsuario, $idProducto);
 
-header("location: ../view/productosAdquiridos.php");
+$validez=$d->determinarSiProductoExisteOTieneStock($idProducto);
+
+echo $idProducto;
+echo $validez;
+
+$_SESSION["msgValidez"]="Ese producto no esta disponible";
+
+
+if($validez==0){
+    $_SESSION["msgValidez"]="Ese producto no esta disponible";
+}else if($validez==1){
+    $_SESSION["msgValidez"]="Listo";
+}
+
+
+  header("location: ../view/productosAdquiridos.php");
 
 ?>

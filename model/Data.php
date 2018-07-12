@@ -138,8 +138,8 @@ class Data{
         return $discos;
     }
 
-    public function comprarProducto($idUsuario, $idProdcuto){
-        $query="CALL efectuarCompraDeUnProducto ($idUsuario, $idProdcuto);";
+    public function comprarProducto($idUsuario, $idProducto){
+        $query="CALL efectuarCompraDeUnProducto ($idUsuario, $idProducto);";
         $this->usarConexion($query);
     }
 
@@ -161,6 +161,27 @@ class Data{
     
         return $productos;
     }
+
+
+    public function determinarSiProductoExisteOTieneStock($idProducto){
+        $query="CALL determinarSiProductoExisteOTieneStock($idProducto);";
+
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $idP=null;
+
+        if($reg = $rs->fetch_array()){
+            $idP = $reg[0];
+        }
+        
+        $this->con->desconectar();
+
+        return $idP;
+
+    }
+
+
 
 
 

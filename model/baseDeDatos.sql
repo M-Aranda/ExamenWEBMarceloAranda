@@ -91,6 +91,30 @@ AS 'Stock'
 FROM producto, bandaGenero, banda, genero
 WHERE producto.banda_Generofk = bandaGenero.id AND bandaGenero.fk_banda= banda.id AND bandaGenero.fk_genero= genero.id AND stock >0;
 
+
+DELIMITER //
+CREATE PROCEDURE determinarSiProductoExisteOTieneStock (idProducto INT) -- DROP PROCEDURE determinarSiProductoExisteOTieneStock;
+	BEGIN
+		DECLARE productoValido BIT;
+        DECLARE cantStock INT;
+        
+        SET cantStock=(SELECT stock FROM producto WHERE id=idProducto);
+        SET productoValido=0;
+        
+        IF (cantStock=NULL OR cantStock=0) THEN
+			SET productoValido=0;
+		ELSEIF (cantStock>0) THEN
+			SET productoValido=1;
+		END IF;
+    
+		SELECT productoValido;
+    END //
+DELIMITER ;
+
+-- CALL determinarSiProductoExisteOTieneStock(3);
+
+
+
 /*
 De aqui en adelante es todo para pruebas
 
