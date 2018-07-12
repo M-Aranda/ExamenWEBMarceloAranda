@@ -46,6 +46,26 @@ CREATE TABLE producto(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE productoAdquirido ( 
+	id INT AUTO_INCREMENT,
+    fk_usuario INT,
+    fk_producto INT,
+    FOREIGN KEY (fk_usuario) REFERENCES usuario (id),
+    FOREIGN KEY (fk_producto) REFERENCES producto (id),
+    PRIMARY KEY (id)
+);
+
+
+DELIMITER //
+CREATE PROCEDURE efectuarCompraDeUnProducto (idUsuario INT, idProducto INT)
+	BEGIN
+		DECLARE stockActual INT;
+        SET stockActual=(SELECT stock FROM producto WHERE id=idProducto);
+		INSERT INTO productoAdquirido VALUES (NULL, idUsuario, idProducto);
+        UPDATE producto SET stock=(stockActual-1) WHERE id=idProducto;
+	END //
+DELIMITER ;
+
 
 INSERT INTO genero VALUES (NULL,'Clasica');
 INSERT INTO genero VALUES (NULL,'Rock');
@@ -71,6 +91,20 @@ AS 'Stock'
 FROM producto, bandaGenero, banda, genero
 WHERE producto.banda_Generofk = bandaGenero.id AND bandaGenero.fk_banda= banda.id AND bandaGenero.fk_genero= genero.id AND stock >0;
 
+/*
+De aqui en adelante es todo para pruebas
+
+
+Este select sirve para ver los nombres de productos adquiridos por un determinado usuario
+SELECT producto.nombre AS 'Nombre' FROM producto, usuario, productoAdquirido WHERE productoAdquirido.fk_producto=producto.id AND 
+productoAdquirido.fk_usuario=usuario.id AND  usuario.id=2;
+*/
+
+
+
+INSERT INTO usuario VALUES (NULL,'sadasasd','ASD','111');
+
+CALL efectuarCompraDeUnProducto (1,1);
 
 -- SELECT * FROM verProductosConInfo WHERE Disco LIKE '%Suplica%';
 -- SELECT * FROM verProductosConInfo;

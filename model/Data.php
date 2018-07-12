@@ -138,7 +138,29 @@ class Data{
         return $discos;
     }
 
+    public function comprarProducto($idUsuario, $idProdcuto){
+        $query="CALL efectuarCompraDeUnProducto ($idUsuario, $idProdcuto);";
+        $this->usarConexion($query);
+    }
 
+
+    public function verProductosAdquiridos($idUsuario){
+        $query="SELECT producto.nombre AS 'Nombre' FROM producto, usuario, productoAdquirido WHERE productoAdquirido.fk_producto=producto.id AND 
+        productoAdquirido.fk_usuario=usuario.id AND  usuario.id=$idUsuario;";
+        $this->con->conectar();
+        $rs = $this->con->ejecutar($query);
+
+        $productos = array();
+
+        while($reg = $rs->fetch_array()){
+            $p=$reg[0];
+            $productos[]=$p;
+        }
+
+        $this->con->desconectar();
+    
+        return $productos;
+    }
 
 
 

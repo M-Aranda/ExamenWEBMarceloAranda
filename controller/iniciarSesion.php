@@ -13,7 +13,7 @@ if($usuario == null){
     
     header("location: ../view/error.php");
 }else{
-    $_SESSION["usuario"]="iniciado";
+    $_SESSION["usuario"]=$usuario;
     
     header("location: ../index.php");
 }

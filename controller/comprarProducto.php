@@ -1,15 +1,18 @@
 <?php
 require_once('../model/Data.php');
+require_once('../model/Usuario.php');
 session_start();
 
 
-$idProducto=$_REQUEST["productoAComprar"];
+$idProducto=$_REQUEST["idProductoAComprar"];
 
 $d=new Data();
-/*
-$_SESSION['discos'] = $d->getDiscos($nombreDisco);
 
+$u=$_SESSION["usuario"];
+$idUsuario=$u->getId();
 
-header("location: ../view/verProducto.php");
-*/
+$d->comprarProducto($idUsuario, $idProducto);
+
+header("location: ../view/productosAdquiridos.php");
+
 ?>

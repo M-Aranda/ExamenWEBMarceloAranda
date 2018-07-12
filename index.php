@@ -1,4 +1,5 @@
 <?php 
+require_once("model/Usuario.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -25,7 +26,6 @@ session_start();
             if(isset($_SESSION["usuario"])){
                 echo "<a href=view/productos.php>Productos</a> ";
                 echo "<a href=controller/cerrarSesion.php>Cerrar sesion</a>";
-
                 
             }else if(!isset($_SESSION["usuario"])){
                 echo "<a href=view/InicioDeSesion.php>Iniciar sesion</a>";
@@ -35,6 +35,15 @@ session_start();
         </nav>
     </div>
 
+        <?php      
+            if(isset($_SESSION["usuario"])){
+                $u=$_SESSION["usuario"];
+                echo "<h3>Hola, ".$u->getNombre()."</h3>";            
+            }else if(!isset($_SESSION["usuario"])){
+                echo "<h3>Bienvenido</h3>";
+            }
+
+    ?>
 
 
 

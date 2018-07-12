@@ -45,6 +45,7 @@ session_start();
     <br>
     <a href="../controller/buscarTodosLosDiscos.php">Ver todos los productos disponibles</a>
     <br>
+    <a href="productosAdquiridos.php">Ver productos adquiridos</a>
 
 
 </body>

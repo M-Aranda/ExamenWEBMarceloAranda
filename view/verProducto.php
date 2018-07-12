@@ -35,15 +35,12 @@ session_start();
     ?>
     </div>
     </nav>
-
     <?php
 
         if(isset($_SESSION["discos"])){
             $listadoDeDiscos=$_SESSION["discos"];
             
             foreach ($listadoDeDiscos as $k) {
-
-
             echo  "<table border=default>
 
                     <tr>
