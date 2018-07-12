@@ -41,7 +41,8 @@ session_start();
             <?php      
             if(isset($_SESSION["usuario"])){
                 $u=$_SESSION["usuario"];
-                echo "<h3>Aqui puede ver los productos que ha adquirido, ".$u->getNombre()."</h3>";            
+                echo "<h3>Aqui puede ver los productos que ha adquirido, ".$u->getNombre()."</h3>"; 
+                echo "<br>";           
             }
 
 
